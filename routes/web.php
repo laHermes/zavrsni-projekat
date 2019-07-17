@@ -27,3 +27,12 @@ Route::get('/addRsd', 'HomeController@viewAddRsd')->name('addRsd');
 
 Route::post('/addRsd', 'HomeController@addRsd')->name('addRsd');
 
+
+Route::get('/addCurrencies', 'HomeController@viewAddCurrencies')->name('addRsdCurrencies');
+
+Route::post('/addCurrencies', 'HomeController@addCurrency')->name('addRsdCurrencies');
+
+Route::get('/sendMoney', 'HomeController@viewSendMoney')->name('sendMoney');
+
+Route::post('/sendMoney', 'HomeController@SendMoney')->name('sendMoney');
+

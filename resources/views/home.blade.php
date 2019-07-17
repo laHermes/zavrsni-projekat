@@ -13,6 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+
                     <a href="/addRsd">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
@@ -23,6 +25,10 @@
                         </div>
                       </div>
                     </a>
+
+                    <a href="/addCurrencies">Add Currencies</a>
+
+                    <a href="/sendMoney">Send Money</a>
                        
 
                         
