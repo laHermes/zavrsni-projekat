@@ -4,16 +4,15 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">View Add Currencies</div>
+            <div class="card" >
+                <div class="card-header">History</div>
 
-                <div class="card-body">
+                <div class="card-body" >
                     @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
                     @endif
-                    
                     <div class="wrapper">
                         <a href="/home">
                             <div class="card bank-buttons">
@@ -67,42 +66,56 @@
 
 
                     <div class="curr-wrapp">
-                        <form action="/addCurrencies" method="post">
-                            @csrf
+                    WITHDRAWALS
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Details</th>
+                            
+                            <th scope="col">Withdrawals</th>
+                            <th scope="col">Balance</th>
+                          </tr>
+                        </thead>
 
-                            @if(!$users->chf_boolean || !$users->eur_boolean || !$users->usd_boolean ||
-                            !$users->gbp_boolean)
+                        <tbody>
+                            @foreach ($withdrawal as $withdrawals)
+                          <tr>
+                            <th>{{ $withdrawals->created_at}}</th>
+                            <td>{{ $withdrawals->details}}</td>
+                            <td>{{ $withdrawals->withdrawals }} {{ $withdrawals->currency}}</td>
+                            <td>{{ $withdrawals->balance }} {{ $withdrawals->currency}}</td>
+                          </tr>
+                          @endforeach
+                        </tbody>
+                    </table>
 
-                            @if(!$users->chf_boolean)
-                            CHF<input type="checkbox" name="chf" id="chf">
-                            <br>
-                            @endif
+                   <br>
+                   <br>
+                   DEPOSITS
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Details</th>
+                            
+                            <th scope="col">Deposits</th>
+                            <th scope="col">Balance</th>
+                          </tr>
+                        </thead>
 
-                            @if(!$users->eur_boolean)
-                            EUR<input type="checkbox" name="eur" id="eur">
-                            <br>
-                            @endif
-
-                            @if(!$users->usd_boolean)
-                            USD<input type="checkbox" name="usd" id="usd">
-                            <br>
-                            @endif
-
-                            @if(!$users->gbp_boolean)
-                            GBP<input type="checkbox" name="gbp" id="gbp">
-                            <br>
-                            @endif
-                            <input type="submit" value="Save">
-
-                            @else
-                            <div class="alert alert-success" role="alert">
-                            You have all currencies.
-                            </div>
-                            @endif
-                        </form>
-
-                        
-                    </div>
+                        <tbody>
+                            @foreach ($deposit as $deposits)
+                          <tr>
+                            <th>{{ $deposits->created_at}}</th>
+                            <td>{{ $deposits->details}}</td>
+                            <td>{{ $deposits->deposits }} {{ $deposits->currency}}</td>
+                            <td>{{ $deposits->balance }} {{ $deposits->currency}}</td>
+                          </tr>
+                          @endforeach
+                        </tbody>
+                    </table>
+                  </div>
                 </div>
             </div>
         </div>

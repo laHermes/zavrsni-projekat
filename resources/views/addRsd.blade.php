@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">AddRsd</div>
+                <div class="card-header">AddChf</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -16,12 +16,12 @@
                    
                        <h1>Dinari
                        </h1>
-                       <h2>{{$users->rsd}}</h2>
+                       <h2>{{$users->chf}}</h2>
                    
 
-                        <form action="/addRsd" method="post">
+                        <form action="/addChf" method="post">
                             @csrf
-                            <input type="text" name="rsd" id="rsd" placeholder="rsd">
+                            <input type="text" name="chf" id="chf" placeholder="chf">
                             <input type="submit" value="Submit">
         
                         </form>

@@ -1,0 +1,137 @@
+/* body {
+    background-image: url("background.jpg");
+    background-size: cover;
+} */
+
+.sidenav {
+    background: rgb(59, 59, 59);
+    box-shadow: 10px 10px 10px 10px rgba(59, 59, 59, 0.3);
+    height: 100vh;
+    width: 15%;
+    float: left;
+}
+.nav {
+    background-color: rgba(46, 46, 46) !important;
+    font-size: 11pt;
+}
+
+.wrapper {
+    margin-right: auto;
+    margin-left: auto;
+
+    max-width: 300px;
+
+    padding-right: 10px;
+    padding-left: 10px;
+    float: left;
+    display: inline;
+}
+
+.bank {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: rgb(247, 247, 247);
+}
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+.material-icons.md-24 {
+    font-size: 24px;
+}
+.material-icons.md-36 {
+    font-size: 36px;
+}
+.material-icons.md-48 {
+    font-size: 48px;
+}
+.material-icons.md-60 {
+    font-size: 60px;
+}
+.material-icons.md-72 {
+    font-size: 72px;
+}
+.material-icons.md-84 {
+    font-size: 84px;
+}
+
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+.material-icons.md-light {
+    color: rgb(247, 247, 247);
+}
+.material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.material-icons.md-custom {
+    color: rgb(194, 34, 34);
+}
+
+.dashboard-table {
+    font-size: 14pt;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.dashboard-grey-title {
+    background-color: darkgray;
+}
+.dashboard-sidenav {
+    width: 350px;
+    height: 800px;
+    float: left;
+    margin-left: 300px;
+}
+
+.card-width {
+    width: 60%;
+}
+
+.first-chart {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.bank-buttons {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: rgb(0, 123, 172) !important;
+    background-color: rgb(247, 247, 247) !important;
+    font-size: 11pt;
+    text-align: center;
+    font-weight: bold;
+}
+
+.curr-table {
+    display: inline-block;
+    max-width: 500px;
+
+    border-radius: 5px;
+}
+
+.curr-wrapp {
+    margin: 0 auto;
+    width: 80%;
+    display: inline-block;
+}
+
+.main-left {
+    text-align: center;
+    width: 15%;
+    height: 100vh;
+    display: inline-block;
+    float: left!important;
+    background-color: rgb(46, 46, 46);
+    padding: 0;
+}
+.main-right {
+    margin: 0 auto;
+    position: absolute;
+    width: 85%;
+    height: 100vh;
+    display: inline-block;
+    float: left;    
+    padding: 0;
+}

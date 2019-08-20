@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddchfBooleanToUsers extends Migration
+class ChangeDatatypeIntegerToDecimalToTransactions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddchfBooleanToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-           
-            $table->boolean('chf_boolean')->default(false);
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->decimal('balance', 15,2)->change();
         });
     }
 
@@ -26,7 +25,7 @@ class AddchfBooleanToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('decimal_to_transactions', function (Blueprint $table) {
             //
         });
     }
