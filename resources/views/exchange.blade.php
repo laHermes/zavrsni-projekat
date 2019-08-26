@@ -1,72 +1,11 @@
 @extends('layouts.app')
+@section('title')
+Exchange
+@endsection
 
 @section('content')
-<div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">Exchange</div>
-
-        <div class="card-body">
-          @if (session('status'))
-          <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-          </div>
-          @endif
-
-          <div class="wrapper">
-              <a href="/home">
-                  <div class="card bank-buttons">
-                      <div class="card-body">
-                          Overview
-                      </div>
-                  </div>
-              </a>
-              <br>
-              <a href="/addMoney">
-                  <div class="card bank-buttons">
-                      <div class="card-body">
-                          Increase Funds
-                      </div>
-                  </div>
-              </a>
-              <br>
-              <a href="/addCurrencies">
-                  <div class="card bank-buttons">
-                      <div class="card-body">
-                          Currencies
-                      </div>
-
-                  </div>
-              </a>
-              <br>
-              <a href="/sendMoney">
-                  <div class="card bank-buttons">
-                      <div class="card-body">
-                          Transfer Funds
-                      </div>
-                  </div>
-              </a>
-              <br>
-              <a href="/exchange">
-                  <div class="card bank-buttons">
-                      <div class="card-body">
-                          Exchange
-                      </div>
-                  </div>
-              </a>
-              <br>
-              <a href="/history">
-                  <div class="card bank-buttons">
-                      <div class="card-body">
-                          History
-                      </div>
-                  </div>
-              </a>
-          </div>
 
 
-          <div class="curr-wrapp">
           <table class="table">
             <thead>
               <tr>
@@ -138,7 +77,7 @@
             </select>
 
             <br> <br>
-            <input class="btn btn-primary" type="submit" value="Submit">
+            <input class="btn btn-primary" type="submit" value="CONVERT">
 
           </form>
           <br>
@@ -149,7 +88,7 @@
           @endif
 
         </div>
-      </div>
+     
       </div>
     </div>
   </div>

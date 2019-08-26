@@ -1,8 +1,3 @@
-/* body {
-    background-image: url("background.jpg");
-    background-size: cover;
-} */
-
 .sidenav {
     background: rgb(59, 59, 59);
     box-shadow: 10px 10px 10px 10px rgba(59, 59, 59, 0.3);
@@ -10,6 +5,23 @@
     width: 15%;
     float: left;
 }
+
+.second-container{
+background-color: rgba(255, 255, 255, 0.973);
+height: 100vh;
+width: 80%;
+box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25),
+0px 5px 4px rgba(0, 0, 0, 0.25);
+float: right;
+}
+
+.table-head{
+background-color: rgba(22, 59, 94, 0.664)!important;
+color: white!important;
+
+
+}
+
 .nav {
     background-color: rgba(46, 46, 46) !important;
     font-size: 11pt;
@@ -31,6 +43,16 @@
     font-family: Verdana, Arial, Helvetica, sans-serif;
     color: rgb(247, 247, 247);
 }
+
+.material-icons{
+    
+    align-items: center!important;
+align-content: center!important;
+text-align: center!important;
+vertical-align: text-bottom!important;
+
+}
+
 
 .material-icons.md-18 {
     font-size: 18px;
@@ -120,18 +142,251 @@
 .main-left {
     text-align: center;
     width: 15%;
-    height: 100vh;
+
     display: inline-block;
-    float: left!important;
-    background-color: rgb(46, 46, 46);
+    float: left !important;
+    /* background-color: rgba(65, 65, 65, 0.233); */
     padding: 0;
+    font-size: 16pt;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .main-right {
     margin: 0 auto;
     position: absolute;
-    width: 85%;
+    width: 65%;
     height: 100vh;
     display: inline-block;
-    float: left;    
+    float: left;
     padding: 0;
+}
+
+.custom-card-body {
+    border-radius: 0;
+}
+
+.custon-nav {
+    height: 73px;
+}
+
+hr {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100%;
+    border-top: 1px solid #4b73a1;
+}
+
+.extends-left {
+    height: 100vh;
+    background-color: #3d3d81;
+    width: 25%;
+}
+
+.brand-color {
+  color: rgb(218, 240, 255);
+}
+
+.nav-dark-blue {
+    background-color: rgba(0, 93, 136, 0.329) !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(248, 232, 217);
+}
+.sidenav-blue {
+    height: 100vh;
+    width: 100%;
+}
+.custom-table-size {
+    height: 25px;
+    width: 750px;
+    margin: 0 auto;
+}
+
+.mock-logo {
+    color: white;
+    text-align: center;
+    font-size: 18pt;
+    font-family: "Livvic", sans-serif;
+}
+
+div.mdl-layout__drawer > nav.mdl-navigation > a.mdl-navigation__link {
+    display: inline-flex;
+    vertical-align: bottom;
+}
+.custom-auto-navbar {
+    font-size: 18pt;
+    color: black;
+}
+
+
+
+.side-bar-links {
+    color: rgba(0, 93, 136, 0.884) !important;
+    vertical-align: middle;
+}
+
+.material-icons {
+    position: relative;
+    top: 5px; /*Change this to adjust the icon*/
+}
+
+.subtitle {
+    color: rgb(231, 173, 106);
+    text-align: left;
+    font-family: "Livvic", sans-serif;
+    font-size: 11pt;
+    margin-left: 5px;
+    height: 50px;
+    font-style: italic;
+}
+.dashboard-table {
+    font-family: "Livvic", sans-serif;
+    font-size: 16pt;
+    font-style: oblique;
+}
+.subdivs {
+    
+    background: rgba(255, 255, 255, 0.904);
+    vertical-align: middle;
+    height: 70px;
+    text-align: center;
+    margin: 0 auto;
+    font-family: "Livvic", sans-serif;
+    font-size: 12pt;
+    border:  rgba(0, 93, 136, 0.329)  1px solid;
+    border-radius: 35px;
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25),
+    0px 5px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+body {
+    font-family: "Livvic", sans-serif;
+    background-image: url("background.jpg");
+    background-repeat: cover;
+    background-size: 100%;
+}
+
+.profile-photo {
+    background: url("public\photos".$users->id);
+}
+
+a:hover {
+    color: #ee8037;
+    text-decoration: none;
+}
+
+.fifty {
+    /* width: 49%; */
+    width: 100%;
+    display: inline-block;
+    padding: 0;
+    margin: 0 auto;
+}
+
+thead {
+    border-top-left-radius: 35px !important;
+    border-top-right-radius: 35px !important;
+}
+
+.border-top-left {
+    border-top-left-radius: 35px !important;
+    padding-left: 20px!important;
+
+}
+.border-top-right {
+    border-top-right-radius: 35px !important;
+}
+.border-bottom-left {
+    border-bottom-left-radius: 35px !important;
+}
+.border-bottom-right {
+    border-bottom-right-radius: 35px !important;
+}
+
+.custom-card-title {
+    background-color: rgba(0, 93, 136, 0.774) !important;
+    color: rgb(248, 232, 217) !important;
+    font-weight: bolder !important;
+    border-radius: 35px !important;
+    text-align: center;
+    font-size: 14pt;
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25),
+        0px 5px 4px rgba(0, 0, 0, 0.25);
+}
+
+.card-border {
+    border-color: rgb(30, 38, 44) !important;
+    border-radius: 35px !important;
+}
+
+.table-bordered,
+.table-bordered td,
+.table-bordered th {
+    border: 1px solid rgb(0, 22, 32) !important;
+}
+.table .table-hover .thead-light{
+border-radius: 35px;
+}
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 0px solid #fcfcfc !important;
+}
+
+.first-column {
+    color: rgb(255, 214, 137);
+    background: rgba(0, 93, 136, 0.774) !important;
+    padding-left: 20px!important;
+}
+
+.current-balance {
+    font-size: 16pt;
+    font-weight: bolder;
+    text-align: right;
+    font-feature-settings: "tnum";
+}
+
+.currencies {
+    margin: 0 0 0 35px;
+    vertical-align: middle;
+    font-weight: bolder;
+    text-align: left;
+    font-size: 16pt;
+    font-feature-settings: "tnum";
+}
+
+.money-code {
+    font-weight: bolder;
+}
+
+tr {
+    height: 50px;
+}
+
+.scroll {
+    max-height: 750px;
+    overflow-y: auto;
+}
+
+.figma-div {
+   margin: 0 auto;
+    left: 33.07%;
+    right: 33.07%;
+    top: 15.9%;
+    bottom: 58.56%;
+
+    width: 80%;
+    background: #ffffff;
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25),
+        0px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 35px;
+}
+
+.align-right{
+
+    padding-right: 20px;
+    text-align: right;
 }

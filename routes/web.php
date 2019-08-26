@@ -20,10 +20,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home/chf', 'HomeController@addChf');
+Route::post('/home/eur', 'HomeController@addEur');
+Route::post('/home/usd', 'HomeController@addUsd');
+Route::post('/home/gbp', 'HomeController@addGbp');
 
 
-Route::get('/addChf', 'HomeController@viewAddChf')->name('addChf');
-Route::post('/addChf', 'HomeController@addChf')->name('addChf');
+// Route::get('/addChf', 'HomeController@viewAddChf')->name('addChf');
+// Route::post('/addChf', 'HomeController@addChf')->name('addChf');
 
 
 Route::get('/addCurrencies', 'HomeController@viewAddCurrencies')->name('addChfCurrencies');
@@ -40,5 +44,8 @@ Route::get('/exchange', 'HomeController@viewExchange');
 Route::post('/exchange', 'HomeController@exchange');
 
 Route::get('/history', 'HomeController@viewHistory');
+
+Route::get('/photoUpload', 'HomeController@viewUploadPhoto');
+Route::post('/photoUpload', 'HomeController@uploadPhoto');
 
 

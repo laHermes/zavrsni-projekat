@@ -47,11 +47,12 @@ class SendMoney
             DB::table('users')->where('id', $this->id)->update([$currency => $total]);
             $this->users->$currency = $this->current_balance - $this->amount;
 
-            $withdrawals = array('details' => $data, 'withdrawals' => $this->amount, 'currency' => $currency, 'to_id' => $this->id, 'from_id' => $this->users->id, 'balance' => $total);
-            DB::table('transactions')->insert($withdrawals);
 
-            $deposits = array('details' => $this->users->name, 'deposits' => $this->amount, 'currency' => $currency, 'to_id' => $this->users->id, 'from_id' => $this->id, 'balance' => $this->users->$currency);
-            DB::table('transactions')->insert($deposits);
+            $withdrawals = array('details' => $data, 'withdrawals' => $this->amount, 'currency' => $currency, 'to_id' => $this->id, 'from_id' => $this->users->id, 'balance' => $this->users->$currency);
+            DB::table('withdrawals')->insert($withdrawals);
+
+            $deposits = array('details' => $this->users->name, 'deposits' => $this->amount, 'currency' => $currency, 'to_id' => $this->id, 'from_id' => $this->users->id, 'balance' => $total);
+            DB::table('deposits')->insert($deposits);
 
 
             $this->users->save();

@@ -35,19 +35,63 @@ class HomeController extends Controller
         $users = Auth::user();
         $time = Carbon::now();
         $time->toDateTimeString();
-        return view('home')->with('users', $users)->with('time', $time);
+        $exchange = DB::table('exchange')->where('id', 1)->first();
+
+        return view('home')->with('users', $users)->with('time', $time)->with('exchange', $exchange);
     }
 
-    public function addChf(Request $request)
-    {
+
+    public function addChf(){
+
         $users = Auth::user();
-        $first = $users->chf;
-        $second = $request->chf;
-        $final = $first + $second;
-        $users->chf = $final;
+        $users->chf_boolean = 1;
         $users->save();
-        return view('/addChf')->with('users', $users);
+        $exchange = DB::table('exchange')->where('id', 1)->first();
+
+        return view('home')->with('users', $users)->with('exchange', $exchange);
+
     }
+    public function addEur(){
+
+        $users = Auth::user();
+        $users->eur_boolean = 1;
+        $users->save();
+        $exchange = DB::table('exchange')->where('id', 1)->first();
+
+        return view('home')->with('users', $users)->with('exchange', $exchange);
+
+    }
+    public function addUsd(){
+
+        $users = Auth::user();
+        $users->usd_boolean = 1;
+        $users->save();
+        $exchange = DB::table('exchange')->where('id', 1)->first();
+
+        return view('home')->with('users', $users)->with('exchange', $exchange);
+
+    }
+    public function addGbp(){
+
+        $users = Auth::user();
+        $users->gbp_boolean = 1;
+        $users->save();
+        $exchange = DB::table('exchange')->where('id', 1)->first();
+
+        return view('home')->with('users', $users)->with('exchange', $exchange);
+
+    }
+
+    // public function addChf(Request $request)
+    // {
+    //     $users = Auth::user();
+    //     $first = $users->chf;
+    //     $second = $request->chf;
+    //     $final = $first + $second;
+    //     $users->chf = $final;
+    //     $users->save();
+    //     return view('/addChf')->with('users', $users);
+    // }
 
 
     public function viewAddChf()
@@ -64,7 +108,7 @@ class HomeController extends Controller
     }
 
 
-    public function addCurrency(Request $request)
+    public function addCurrency()
     {
         $users = Auth::user();
 
@@ -99,14 +143,14 @@ class HomeController extends Controller
 
         $id = $request->bank_number;
         $amount = $request->amount;
-        
+
         $currency = $request->currencies;
         $current_balance = $users->$currency;
         $bNumber = DB::table('users')->where('id', $id)->value('id');
 
         $sendMoney = new SendMoney($users, $id, $amount, $current_balance, $currency, $bNumber);
         $msg = $sendMoney->sendMoney();
-       
+
         return view('/sendMoney')->with('users', $users)->with('msg', $msg);
     }
 
@@ -127,7 +171,7 @@ class HomeController extends Controller
 
         $addMoney = new Money($users, $setAmt, $first, $second, $curr);
         $addMoney->addMoney();
-                
+
         return view('/addMoney')->with('users', $users);
     }
 
@@ -163,14 +207,41 @@ class HomeController extends Controller
     public function viewHistory()
     {
         $users = Auth::user();
-        $withdrawal = DB::table('transactions')->where('from_id', $users->id)->get();
-        $deposit = DB::table('transactions')->where('to_id', $users->id)->get();
+        $withdrawal = DB::table('withdrawals')->where('from_id', $users->id)->get();
+        $deposit = DB::table('deposits')->where('to_id', $users->id)->get();
 
         return view('/history')->with('users', $users)->with('withdrawal', $withdrawal)->with('deposit', $deposit);
     }
 
+    public function viewUploadPhoto()
+    {
 
+        $users = Auth::user();
+        return view('/photoUpload')->with('users', $users);
+    }
 
+    public function uploadPhoto(Request $request)
+    {
 
+        $users = Auth::user();
 
+        $this->validate($request, [
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('photo')) {
+            $image = $request->file('photo');
+            $name = $users->id . '.' . $image->getClientOriginalExtension();
+
+            if (!is_dir('/photos')) { 
+                mkdir('/photos');
+            }
+            $destinationPath = public_path('/photos');
+
+            $image->move($destinationPath, $name);
+           
+
+            return back()->with('success', 'Image Upload successfully');
+        }
+    }
 }
