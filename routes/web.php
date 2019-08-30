@@ -19,6 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home/chf', 'HomeController@addChf');
 Route::post('/home/eur', 'HomeController@addEur');
@@ -26,16 +30,14 @@ Route::post('/home/usd', 'HomeController@addUsd');
 Route::post('/home/gbp', 'HomeController@addGbp');
 
 
-// Route::get('/addChf', 'HomeController@viewAddChf')->name('addChf');
-// Route::post('/addChf', 'HomeController@addChf')->name('addChf');
 
 
-Route::get('/addCurrencies', 'HomeController@viewAddCurrencies')->name('addChfCurrencies');
-Route::post('/addCurrencies', 'HomeController@addCurrency')->name('addChfCurrency');
+Route::get('/addCurrencies', 'HomeController@viewAddCurrencies');
+Route::post('/addCurrencies', 'HomeController@addCurrency');
 
 
-Route::get('/sendMoney', 'HomeController@viewSendMoney')->name('sendMoney');
-Route::post('/sendMoney', 'HomeController@SendMoney')->name('sendMoney');
+Route::get('/sendMoney', 'HomeController@viewSendMoney');
+Route::post('/sendMoney', 'HomeController@SendMoney');
 
 Route::get('/addMoney', 'HomeController@viewAddMoney');
 Route::post('/addMoney', 'HomeController@addMoney');
@@ -47,5 +49,8 @@ Route::get('/history', 'HomeController@viewHistory');
 
 Route::get('/photoUpload', 'HomeController@viewUploadPhoto');
 Route::post('/photoUpload', 'HomeController@uploadPhoto');
+
+Route::get('/changePassword', 'HomeController@viewChangePassword');
+Route::post('/changePassword', 'HomeController@changePassword');
 
 

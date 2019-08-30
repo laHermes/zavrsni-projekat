@@ -104,8 +104,13 @@
                         <ul class="navbar-nav ml-auto custom-auto-navbar">
                             <!-- Authentication Links -->
 
-
-                            <li class="nav-item dropdown">
+                            <li>
+                                @if($users->photo_dir != null)
+                                <a href="/home">
+                                    <img class="avatar" height="50px"
+                                        src="{{asset("storage/photos/" . Auth::user()->photo_dir)}}" @endif </li> <li
+                                        class="nav-item dropdown">
+                                </a>
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -143,8 +148,8 @@
                             </div>
                             <br>
 
-                           
-                           
+
+
 
                             <div class="subdivs">
                                 <a class="side-bar-links" href="/sendMoney">
@@ -178,8 +183,8 @@
 
 
                         </div>
-                        
-                        
+
+
                         <br>
                         <div class="subdivs">
                             <a class="side-bar-links" href="/history">
@@ -189,9 +194,9 @@
                                 History
                             </a>
                         </div>
-                       
-                       
-                        
+
+
+
                         <br>
                         <div class="subdivs">
                             <a class="side-bar-links" href="/photoUpload">
@@ -201,34 +206,43 @@
                                 Photo Upload
                             </a>
                         </div>
+                        <br>
+                        <div class="subdivs">
+                            <a class="side-bar-links" href="/changePassword">
+                                <i class="material-icons md-36">
+                                    fingerprint
+                                    </i><br>
+                                Change Password
+                            </a>
+                        </div>
 
                     </div>
                 </div>
 
-<div class="second-container">
-        
-        <main class="py-4">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-lg">
-                        {{-- <div class="card card-border"> --}}
-                        <div class="card-header dashboard-table custom-card-title">@yield('title')</div>
+                <div class="second-container">
 
-                        <div class="card-body">
-                            @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                            </div>
-                            @endif
-                            @yield('content')
-        </main>
-        @endguest
-        </ul>
-    </div>
-    </div>
+                    <main class="py-4">
+                        <div class="container-fluid">
+                            <div class="row justify-content-center">
+                                <div class="col-lg">
+                                    {{-- <div class="card card-border"> --}}
+                                    <div class="card-header dashboard-table custom-card-title">@yield('title')</div>
 
-    {{-- <main class="py-4">
+                                    <div class="card-body">
+                                        @if (session('status'))
+                                        <div class="alert alert-success" role="alert">
+                                            {{ session('status') }}
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @yield('content')
+                    </main>
+                    @endguest
+                    </ul>
+                </div>
+            </div>
+
+            {{-- <main class="py-4">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -239,10 +253,10 @@
                             @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
-    </div>
-    @endif
-    @yield('content')
-    </main> --}}
+        </div>
+        @endif
+        @yield('content')
+        </main> --}}
     </div>
 </body>
 

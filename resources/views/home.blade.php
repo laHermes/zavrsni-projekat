@@ -69,7 +69,7 @@ OVERVIEW on {{$ldate = date('Y-m-d')}}
                 </tr>
 
                 <tr>
-                    <th class="first-column border-bottom-left currencies"  scope="row">Pound sterling</th>
+                    <th class="first-column border-bottom-left currencies" scope="row">Pound sterling</th>
                     @if ($users->gbp_boolean)
                     <td class="current-balance" width="50%">£ {{$users->gbp}}</td>
                     @else
@@ -144,24 +144,7 @@ OVERVIEW on {{$ldate = date('Y-m-d')}}
 </div>
 
 
-{{-- <hr>
-                    <br>
-                    <div class="fifty">
-                        <div class="container">
-                            <canvas id="myChart" width="600" height="400"></canvas>
-                        </div>
-                    </div> --}}
 
-{{-- <br>
-                    <a href="/addMoney">Add Money</a>
-                    <br>
-                    <a href="/exchange">Exchange</a>
-                    <br>
-                    <a href="/history">History</a> --}}
-
-{{-- <div class="container">
-                        <canvas id="myChart" width="600" height="400"></canvas>
-                    </div> --}}
 
 
 </div>
@@ -171,88 +154,5 @@ OVERVIEW on {{$ldate = date('Y-m-d')}}
 </div>
 </div>
 
-<script>
-    let myChart = document.getElementById('myChart').getContext('2d');
-        Chart.defaults.global.defaultFontColor = 'black';
 
-        Chart.defaults.global.defaultFontFamily = 'Merriweather';
-
-            let balanceChart = new Chart(myChart, {
-                type:'bar',
-                data:{
-                    //   labels:['CHF', 'EUR', 'USD', 'GBP'],
-                     datasets: [{
-                         label: 'CHF',
-                         data: [{{$users->chf}}],
-                         backgroundColor: ['rgba(213, 43, 30, 0.5)'],
-                         borderColor: ['rgba(213, 43, 30, 1)'],
-                         borderWidth: 1,
-                         position: 'bottom'
-
-                     },
-					 {
-                         label: 'EUR',
-                         data: [{{$users->eur}}],
-                         backgroundColor: ['rgba(0, 51, 153, 0.5)'],
-                         borderColor: ['rgba(0, 51, 153, 1)'],
-                         borderWidth: 1
-
-                     },
-					 {
-                         label: 'USD',
-                         data: [{{$users->usd}}],
-                         backgroundColor: ['rgba(255, 206, 86, 0.5)'],
-                         borderColor: ['rgba(75, 192, 192, 0.5)'],
-                         borderWidth: 1
-
-                     },
-					 {
-                         label: 'GBP',
-                         data: [{{$users->gbp}}],
-                         backgroundColor: ['rgba(75, 192, 192, 0.5)'],
-                         borderColor: ['rgba(75, 192, 192, 1)'],
-                         borderWidth: 1
-                     }
-					
-					
-					 ]
-
-
-                    // labels:['CHF', 'EUR', 'USD', 'GBP'],
-                    // datasets: [{
-                    //      label: ['CHF', 'EUR', 'USD', 'GBP'],
-                    //      data: [{{$users->chf}}, {{$users->eur}}, {{$users->usd}}, {{$users->gbp}}],
-                    //     backgroundColor: [
-                    //          'rgba(213, 43, 30, 0.5)',
-                    //         'rgba(0, 51, 153, 0.5)',
-                    //         'rgba(255, 206, 86, 0.5)',
-                    //          'rgba(75, 192, 192, 0.5)'
-                    //     ],
-                    //     borderColor: [
-                    //         'rgba(213, 43, 30, 1)',
-                    //         'rgba(0, 51, 153, 1)',
-                    //          'rgba(255, 206, 86, 1)',
-                    //          'rgba(75, 192, 192, 1)',
-                    //     ],
-                    //      borderWidth: 1
-                    //  }]
-                },
-                options: {
-                            legend: {
-                                      display: true,
-                                            position: 'bottom',
-                                                  labels: {
-                                                              fontColor: "#000080",
-                                                                    }
-                                                                        },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-</script>
 @endsection

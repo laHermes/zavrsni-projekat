@@ -6,91 +6,107 @@ Exchange
 @section('content')
 
 
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">EXCHANGE RATES</th>
-                <th scope="col">CHF</th>
-                <th scope="col">EUR</th>
-                <th scope="col">USD</th>
-                <th scope="col">GBP</th>
-              </tr>
-            </thead>
+<div class="figma-div">
+  <table class="table table-hover">
+    <thead class="table-head">
+      <tr>
+        <th class="border-top-left table-head" scope="col">Exchange Rate</th>
+        <th class="align-right table-head" scope="col">CHF</th>
+        <th class="align-right table-head" scope="col">EUR</th>
+        <th class="align-right table-head" scope="col">USD</th>
+        <th class="border-top-right align-right table-head" scope="col">GBP</th>
+      </tr>
+    </thead>
 
-            <tbody>
-              <tr>
-                <th scope="row">1 CHF =</th>
-                <td>1</td>
-                <td>{{$exchange->CHFtoEUR}}</td>
-                <td>{{$exchange->CHFtoUSD}}</td>
-                <td>{{$exchange->CHFtoGBP}}</td>
-              </tr>
+    <tbody>
+      <tr>
+        <th class="first-column currencies" scope="row">1 CHF =</th>
+        <td class="money-code current-balance">1</td>
+        <td class="money-code current-balance">{{$exchange->CHFtoEUR}}</td>
+        <td class="money-code current-balance">{{$exchange->CHFtoUSD}}</td>
+        <td class="money-code current-balance">{{$exchange->CHFtoGBP}}</td>
+      </tr>
 
-              <tr>
-                <th scope="row">1 EUR =</th>
-                <td>{{$exchange->EURtoCHF}}</td>
-                <td>1</td>
-                <td>{{$exchange->EURtoUSD}}</td>
-                <td>{{$exchange->EURtoGBP}}</td>
-              </tr>
+      <tr>
+        <th class="first-column currencies" scope="row">1 EUR =</th>
+        <td class="money-code current-balance">{{$exchange->EURtoCHF}}</td>
+        <td class="money-code current-balance">1</td>
+        <td class="money-code current-balance">{{$exchange->EURtoUSD}}</td>
+        <td class="money-code current-balance">{{$exchange->EURtoGBP}}</td>
+      </tr>
 
-              <tr>
-                <th scope="row">1 USD =</th>
-                <td>{{$exchange->USDtoCHF}}</td>
-                <td>{{$exchange->USDtoEUR}}</td>
-                <td>1</td>
-                <td>{{$exchange->USDtoGBP}}</td>
+      <tr>
+        <th class="first-column currencies" scope="row">1 USD =</th>
+        <td class="money-code current-balance">{{$exchange->USDtoCHF}}</td>
+        <td class="money-code current-balance">{{$exchange->USDtoEUR}}</td>
+        <td class="money-code current-balance">1</td>
+        <td class="money-code current-balance">{{$exchange->USDtoGBP}}</td>
 
-              </tr>
+      </tr>
 
-              <tr>
-                <th scope="row">1 GBP =</th>
-                <td>{{$exchange->GBPtoCHF}}</td>
-                <td>{{$exchange->GBPtoEUR}}</td>
-                <td>{{$exchange->GBPtoUSD}}</td>
-                <td>1</td>
-              </tr>
+      <tr>
+        <th class="first-column border-bottom-left currencies" scope="row">1 GBP =</th>
+        <td class="money-code current-balance">{{$exchange->GBPtoCHF}}</td>
+        <td class="money-code current-balance">{{$exchange->GBPtoEUR}}</td>
+        <td class="money-code current-balance">{{$exchange->GBPtoUSD}}</td>
+        <td class="money-code border-bottom-right current-balance">1</td>
+      </tr>
 
-            </tbody>
-          </table>
+    </tbody>
+  </table>
+</div>
 
-          <br>
+<br>
 
-          <form action="/exchange" method="post">
-            @csrf
+<div class="figma-div table-head">
+  <div class="max-eight">
+    <form action="/exchange" method="post">
+      @csrf
 
-            Exchange
-            <input type="text" class="form-control form-control-lg" name="value" placeholder="Value">
-            from
-            <select class="browser-default custom-select form-control-lg" name="currencies1">
-              <option value="chf">CHF Fr.</option>
-              <option value="eur">EUR €</option>
-              <option value="usd">USD $</option>
-              <option value="gbp">GBP £</option>
-            </select>
-            to
-            <select class="browser-default custom-select form-control-lg" name="currencies2">
-              <option value="chf">CHF Fr.</option>
-              <option value="eur">EUR €</option>
-              <option value="usd">USD $</option>
-              <option value="gbp">GBP £</option>
-            </select>
+<div class="margin-20">
 
-            <br> <br>
-            <input class="btn btn-primary" type="submit" value="CONVERT">
+  Exchange
+</div>
 
-          </form>
-          <br>
-          @if (!empty($rsl))
-          <div class="alert alert-primary" role="alert">
-            {{$rsl}}
-          </div>
-          @endif
+      <input type="text" class="form-control form-control-lg" name="value" placeholder="Amount">
+      <div class="margin-20">
 
-        </div>
-     
+        from
       </div>
-    </div>
+      <select class="browser-default custom-select form-control-lg" name="currencies1">
+        <option value="chf">CHF Fr.</option>
+        <option value="eur">EUR €</option>
+        <option value="usd">USD $</option>
+        <option value="gbp">GBP £</option>
+      </select>
+      <div class="margin-20">
+        to
+      </div>
+      <select class="browser-default custom-select form-control-lg" name="currencies2">
+        <option value="chf">CHF Fr.</option>
+        <option value="eur">EUR €</option>
+        <option value="usd">USD $</option>
+        <option value="gbp">GBP £</option>
+      </select>
+
+      <br> <br>
+      <input class="btn btn-primary" type="submit" value="CONVERT">
+      <br>
+      <br>
+    </form>
   </div>
+</div>
+<br>
+@if (!empty($rsl))
+<div class="alert alert-primary" role="alert">
+  {{$rsl}}
+</div>
+@endif
+
+</div>
+
+</div>
+</div>
+</div>
 </div>
 @endsection
