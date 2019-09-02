@@ -7,6 +7,7 @@ Exchange
 
 
 <div class="figma-div">
+  
   <table class="table table-hover">
     <thead class="table-head">
       <tr>

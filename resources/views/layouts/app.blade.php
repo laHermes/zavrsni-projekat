@@ -161,7 +161,6 @@
                             </div>
 
                             <br>
-                            {{-- <br> --}}
                             <div class="subdivs">
                                 <a class="side-bar-links" href="/exchange">
                                     <i class="material-icons md-36">
@@ -171,7 +170,6 @@
                                 </a>
                             </div>
                             <br>
-                            {{-- <br> --}}
                             <div class="subdivs">
                                 <a class="side-bar-links" href="/addMoney">
                                     <i class="material-icons md-36">
@@ -195,6 +193,14 @@
                             </a>
                         </div>
 
+                        <br>
+                        <div class="subdivs">
+                            <a class="side-bar-links" href="/bitcoin">
+                                <div class="bchain">₿</div> 
+                                <br>
+                                Bitcoin </a>
+                        </div>
+
 
 
                         <br>
@@ -211,7 +217,7 @@
                             <a class="side-bar-links" href="/changePassword">
                                 <i class="material-icons md-36">
                                     fingerprint
-                                    </i><br>
+                                </i><br>
                                 Change Password
                             </a>
                         </div>

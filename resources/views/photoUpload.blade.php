@@ -29,10 +29,18 @@ Max resolution: 2048px;
 <br>
 <div class="photo">
 
-   
-    <img style="max-width: 800px; margin: 0 auto;" height="500px" src="{{asset("storage/photos/" . $users->photo_dir)}}" alt="">
+
+    <img style="max-width: 800px; margin: 0 auto;" height="500px" src="{{asset("storage/photos/" . $users->photo_dir)}}"
+        alt="">
 
 </div>
+
+        @if($errors->any())
+            <h4>{{$errors->first()}}</h4>
+        @endif
+        
+        
+
 </div>
 </div>
 </div>

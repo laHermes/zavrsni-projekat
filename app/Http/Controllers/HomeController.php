@@ -98,39 +98,9 @@ class HomeController extends Controller
 
 
 
-
-
-    // public function viewAddCurrencies()
-    // {
-    //     $users = Auth::user();
-    //     return view('/addCurrencies')->with('users', $users);
-    // }
-
-
-    // public function addCurrency()
-    // {
-    //     $users = Auth::user();
-
-    //     if (isset($_POST['chf'])) {
-    //         $users->chf_boolean = true;
-    //     }
-    //     if (isset($_POST['eur'])) {
-    //         $users->eur_boolean = true;
-    //     }
-    //     if (isset($_POST['usd'])) {
-    //         $users->usd_boolean = true;
-    //     }
-    //     if (isset($_POST['gbp'])) {
-    //         $users->gbp_boolean = true;
-    //     }
-    //     $users->save();
-
-    //     return view('/addCurrencies')->with('users', $users);
-    // }
-
-
-    public function viewSendMoney()    {
-        $msg = '';        
+    public function viewSendMoney()
+    {
+        $msg = '';
         return view('/sendMoney')->with('msg', $msg);
     }
 
@@ -190,9 +160,7 @@ class HomeController extends Controller
 
         $exchange = new Exchange(Auth::user(), $value, $curr1, $curr2);
         $rsl = $exchange->exchange();
-
         $exchange = DB::table('exchange')->where('id', 1)->first();
-
 
         return view('/exchange')->with('users', Auth::user())->with('rsl', $rsl)->with('exchange', $exchange);
     }
@@ -207,7 +175,6 @@ class HomeController extends Controller
 
     public function viewUploadPhoto()
     {
-
         $extensions = ['.png', '.jpg', '.gif', '.svg', '.jpeg'];
 
         foreach ($extensions as $extension) {
@@ -224,11 +191,10 @@ class HomeController extends Controller
 
     public function uploadPhoto(Request $request)
     {
-
-
         $this->validate($request, [
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
 
         if ($request->hasFile('photo')) {
             $image = $request->file('photo');
@@ -238,54 +204,85 @@ class HomeController extends Controller
                 mkdir('/photos');
             }
 
-            $extensions = ['.png', '.jpg', '.gif', '.svg', '.jpeg'];
-            foreach ($extensions as $extension) {
+            $storagePath = public_path('storage\\photos\\' . $name);
 
-                $storagePath = public_path('storage\\photos\\' . $name);
-
-                if (file_exists($storagePath)) {
-                    unlink($storagePath);
-                }
+            if (file_exists($storagePath)) {
+                unlink($storagePath);
             }
+
             Auth::user()->photo_dir = $name;
             Auth::user()->save();
 
-
             $destinationPath = public_path('/storage/photos');
-
             $image->move($destinationPath, $name);
-
-
-            return back();
+            return back()->with('msg', 'success');
         }
     }
 
 
     public function viewChangePassword()
     {
-
-
-
-
         return view('/changePassword')->with("users", Auth::user());
     }
 
+
+
     public function changePassword(Request $request)
     {
-        $pass1 =  Hash::make($request->pass1);
-        $pass2 = Hash::make($request->pass2);
-        $old = Auth::user()->password;
 
-        if (Hash::check($pass1, $pass2)) {
-            if (Hash::check($pass1, $old)) {
+        $pass1_enc = $request->pass1;
+        $old_pass = Auth::user()->password;
 
-                Auth::user()->password = Hash::make($request->password);
-                Auth::user()->save();
-            }
+        if (Hash::check($pass1_enc, $old_pass)) {
+
+            Auth::user()->password = bcrypt($pass1_enc);
+            Auth::user()->save();
+        } else {
+            return back()->withErrors('errors', 'fail');
         }
 
+        return back();
+    }
 
+
+    public function resetPassword()
+    {
+
+        $new_password =  bcrypt('12345678');
+        Auth::user()->password = $new_password;
+        Auth::user()->save();
 
         return back();
+    }
+
+    public function viewBitcoin()
+    {
+        $date = date('Y-m-d', strtotime("-1 days"));
+
+        // $url = 'https://index-api.bitcoin.com/api/v0/price/usd';
+        // $json = json_decode(file_get_contents($url) , true);
+
+        $url = "https://bitpay.com/api/rates/usd";
+        $json = file_get_contents($url);
+        $data = json_decode($json, TRUE);
+
+        $rate = $data["rate"];
+        $usd_price = 10000;     # Let cost of elephant be 10$
+        $bitcoin_price = round($usd_price / $rate, 8);
+
+        $url_2 = 'https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday';
+        $json_2 = file_get_contents($url_2);
+        $data_2 = json_decode($json_2, true);
+        $rate2 = $data_2["bpi"][$date];
+        $rate2 = round($rate2 , 2);
+
+
+        $diff = round(($rate2 - $rate), 2);
+        $str = ($rate2 / $rate) - 1;
+
+        $percent = round((float) $str * 100) . '%';
+
+
+        return view('/bitcoin')->with("users", Auth::user())->with('btc',  $rate)->with('closeBtc', $rate2)->with('percent', $percent)->with('diff', $diff);
     }
 }

@@ -52,5 +52,10 @@ Route::post('/photoUpload', 'HomeController@uploadPhoto');
 
 Route::get('/changePassword', 'HomeController@viewChangePassword');
 Route::post('/changePassword', 'HomeController@changePassword');
+Route::post('/changePassword/reset', 'HomeController@resetPassword');
+
+
+
+Route::get('/bitcoin', 'HomeController@viewBitcoin');
 
 
