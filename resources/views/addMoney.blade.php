@@ -6,86 +6,97 @@ Increase Funds
 
 @section('content')
 
-@if($users->chf_boolean || $users->eur_boolean || $users->usd_boolean || $users->gbp_boolean)
-<table class="table">
-    <thead>
-        <tr>
-            @if ($users->chf_boolean == true)
-            <th scope="col">CHF</th>
-            @endif
+<div class="figma-div">
+    <div class="max-eight">
 
-            @if ($users->eur_boolean == true)
-            <th scope="col">EUR</th>
-            @endif
+    @if($users->chf_boolean || $users->eur_boolean || $users->usd_boolean || $users->gbp_boolean)
+    <table class="table">
+        <thead>
+            <tr>
+                @if ($users->chf_boolean == true)
+                <th scope="col">CHF</th>
+                @endif
 
-            @if ($users->usd_boolean == true)
-            <th scope="col">USD</th>
-            @endif
+                @if ($users->eur_boolean == true)
+                <th scope="col">EUR</th>
+                @endif
 
-            @if ($users->gbp_boolean == true)
-            <th scope="col">GBP</th>
-            @endif
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            @if ($users->chf_boolean == true)
+                @if ($users->usd_boolean == true)
+                <th scope="col">USD</th>
+                @endif
 
-            <td>{{$users->chf}} Fr.</td>
-            @endif
+                @if ($users->gbp_boolean == true)
+                <th scope="col">GBP</th>
+                @endif
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @if ($users->chf_boolean == true)
 
-            @if ($users->eur_boolean == true)
+                <td>{{$users->chf}} Fr.</td>
+                @endif
 
-            <td>{{$users->eur}} €</td>
-            @endif
+                @if ($users->eur_boolean == true)
 
-            @if ($users->usd_boolean == true)
+                <td>{{$users->eur}} €</td>
+                @endif
 
-            <td>{{$users->usd}} $</td>
-            @endif
+                @if ($users->usd_boolean == true)
 
-            @if ($users->gbp_boolean == true)
+                <td>{{$users->usd}} $</td>
+                @endif
 
-            <td>{{$users->gbp}} £</td>
-            @endif
-        </tr>
-    <tbody>
-</table>
+                @if ($users->gbp_boolean == true)
 
-
-<form action="/addMoney" method="post">
-    @csrf
-    <input class="form-control form-control-lg" type="text" name="amount" id="amo" placeholder="Enter Amount">
-    <br>
-
-    <select class="browser-default custom-select form-control-lg" name="selectOptions">
-        @if ($users->chf_boolean == true)
-        <option value="chf">CHF Fr.</option>
-        @endif
-
-        @if ($users->eur_boolean == true)
-        <option value="eur">EUR [€]</option>
-        @endif
-
-        @if ($users->usd_boolean == true)
-        <option value="usd">USD [$]</option>
-        @endif
-
-        @if ($users->gbp_boolean == true)
-        <option value="gbp">GBP [£]</option>
-        @endif
-    </select>
-
-    <br><br>
-    <input class="btn btn-primary" type="submit" value="Add Funds">
-    <br>
-</form>
-<br>
-<br>
-
-<div class="container">
-    <canvas id="myChart" width="600" height="400"></canvas>
+                <td>{{$users->gbp}} £</td>
+                @endif
+            </tr>
+        <tbody>
+    </table>
 </div>
+</div>
+
+<div class="figma-div">
+        <div class="max-eight">
+<br>
+    <form action="/addMoney" method="post">
+        @csrf
+        <input class="form-control form-control-lg" type="text" name="amount" id="amo" placeholder="Enter Amount">
+        <br>
+
+        <select class="browser-default custom-select form-control-lg" name="selectOptions">
+            @if ($users->chf_boolean == true)
+            <option value="chf">CHF Fr.</option>
+            @endif
+
+            @if ($users->eur_boolean == true)
+            <option value="eur">EUR [€]</option>
+            @endif
+
+            @if ($users->usd_boolean == true)
+            <option value="usd">USD [$]</option>
+            @endif
+
+            @if ($users->gbp_boolean == true)
+            <option value="gbp">GBP [£]</option>
+            @endif
+        </select>
+
+        <br><br>
+        <input class="btn btn-primary" type="submit" value="Add Funds">
+        <br>
+    </form>
+    <br>
+</div>
+</div>
+<br>
+<br>
+
+<div class="figma-div">
+    <canvas id="myChart" width="400" height="250"></canvas>
+</div>
+
 @else
 
 Please enable a currency.

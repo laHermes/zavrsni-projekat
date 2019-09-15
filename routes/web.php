@@ -19,22 +19,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-
-
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home/chf', 'HomeController@addChf');
 Route::post('/home/eur', 'HomeController@addEur');
 Route::post('/home/usd', 'HomeController@addUsd');
 Route::post('/home/gbp', 'HomeController@addGbp');
 
-
-
-
 Route::get('/addCurrencies', 'HomeController@viewAddCurrencies');
 Route::post('/addCurrencies', 'HomeController@addCurrency');
-
 
 Route::get('/sendMoney', 'HomeController@viewSendMoney');
 Route::post('/sendMoney', 'HomeController@SendMoney');
@@ -56,6 +48,6 @@ Route::post('/changePassword/reset', 'HomeController@resetPassword');
 
 
 
-Route::get('/bitcoin', 'HomeController@viewBitcoin');
+
 
 

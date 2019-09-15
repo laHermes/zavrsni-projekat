@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bitcoin;
 use Carbon\Carbon;
 use App\Exchange;
 use App\Money;
@@ -185,7 +186,6 @@ class HomeController extends Controller
             }
         }
 
-
         return view('/photoUpload')->with('users', Auth::user())->with('extensions', $extensions);
     }
 
@@ -194,7 +194,6 @@ class HomeController extends Controller
         $this->validate($request, [
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
 
         if ($request->hasFile('photo')) {
             $image = $request->file('photo');
@@ -225,8 +224,6 @@ class HomeController extends Controller
         return view('/changePassword')->with("users", Auth::user());
     }
 
-
-
     public function changePassword(Request $request)
     {
 
@@ -254,35 +251,5 @@ class HomeController extends Controller
 
         return back();
     }
-
-    public function viewBitcoin()
-    {
-        $date = date('Y-m-d', strtotime("-1 days"));
-
-        // $url = 'https://index-api.bitcoin.com/api/v0/price/usd';
-        // $json = json_decode(file_get_contents($url) , true);
-
-        $url = "https://bitpay.com/api/rates/usd";
-        $json = file_get_contents($url);
-        $data = json_decode($json, TRUE);
-
-        $rate = $data["rate"];
-        $usd_price = 10000;     # Let cost of elephant be 10$
-        $bitcoin_price = round($usd_price / $rate, 8);
-
-        $url_2 = 'https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday';
-        $json_2 = file_get_contents($url_2);
-        $data_2 = json_decode($json_2, true);
-        $rate2 = $data_2["bpi"][$date];
-        $rate2 = round($rate2 , 2);
-
-
-        $diff = round(($rate2 - $rate), 2);
-        $str = ($rate2 / $rate) - 1;
-
-        $percent = round((float) $str * 100) . '%';
-
-
-        return view('/bitcoin')->with("users", Auth::user())->with('btc',  $rate)->with('closeBtc', $rate2)->with('percent', $percent)->with('diff', $diff);
-    }
+    
 }

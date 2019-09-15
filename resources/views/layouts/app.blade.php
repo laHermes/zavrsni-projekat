@@ -178,8 +178,6 @@
                                     Increase Funds
                                 </a>
                             </div>
-
-
                         </div>
 
 
@@ -192,17 +190,7 @@
                                 History
                             </a>
                         </div>
-
-                        <br>
-                        <div class="subdivs">
-                            <a class="side-bar-links" href="/bitcoin">
-                                <div class="bchain">₿</div> 
-                                <br>
-                                Bitcoin </a>
-                        </div>
-
-
-
+                 
                         <br>
                         <div class="subdivs">
                             <a class="side-bar-links" href="/photoUpload">

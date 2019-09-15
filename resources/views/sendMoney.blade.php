@@ -5,10 +5,12 @@ Transfer
 @endsection
 
 @section('content')
+<br>
 <div class="figma-div table-head">
 <div class="max-eight">
 <form action="/sendMoney" method="post">
     @csrf
+    <br>
     To
     <input class="form-control form-control-lg" type="text" name="bank_number" id="bank_num"
         placeholder="Enter Bank Number">
