@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->decimal('usd', 15,2);
             $table->boolean('gbp_boolean')->default(false);
             $table->decimal('gbp', 15,2);
+            $table->string('photo_dir')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
