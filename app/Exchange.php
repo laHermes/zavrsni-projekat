@@ -2,22 +2,17 @@
 
 namespace App;
 
-
 use Illuminate\Support\Facades\DB;
 
 class Exchange
 {
-
-
     private $users;
     private $value;
     private $curr1;
     private $curr2;
 
-
     public function __construct($users = NULL, $value = 0, $curr1 = 0, $curr2 = 0)
     {
-
         $this->users = $users;
         $this->value = $value;
         $this->curr1 = $curr1;
@@ -59,18 +54,14 @@ class Exchange
 
     public function viewExchange()
     {
-
         $api_id = 'f53ec1381124cf3ac11a0ac413c7ee76';
         $curr = ['CHF', 'EUR', 'USD', 'GBP'];
-
-
 
         foreach ($curr as $curr1) {
 
             foreach ($curr as $curr2) {
 
                 if ($curr1 != $curr2) {
-
 
                     $url = 'https://api.kursna-lista.info/' . $api_id . '/konvertor/' . $curr1 . '/' . $curr2 . '/' . 1;
 
@@ -86,9 +77,10 @@ class Exchange
                         $column = $curr1 . "to" . $curr2;
                         $result = $data['result']['value'];
 
+                        DB::table('exchange')->insert([$column => $result]);
                         DB::table('exchange')->update([$column => $result]);
                     } else {
-                        return $msg = "Error: " . $data['code'] . " - " . $data['msg'];
+                        return "Error: " . $data['code'] . " - " . $data['msg'];
                     }
                 }
             }

@@ -50,9 +50,12 @@ class HomeController extends Controller
         $time = Carbon::now();
         $time->toDateTimeString();
         $viewExchange = new Exchange();
-        $exchange = DB::table('exchange')->where('id', 1)->first();
+        $viewExchange->viewExchange();
+        $exchange = DB::table('exchange')->first();
         //->with('users', $users)
-        return view('home')->with('time', $time)->with('exchange', $exchange);
+
+        // dd($exchange);
+        return view('home')->with('time', $time)->with('exchange', $exchange)->with('users', Auth::user());
     }
 
 
@@ -61,7 +64,7 @@ class HomeController extends Controller
         $users = Auth::user();
         $users->chf_boolean = 1;
         $users->save();
-        $exchange = DB::table('exchange')->where('id', 1)->first();
+        $exchange = DB::table('exchange')->first();
 
         return view('home')->with('users', Auth::user())->with('exchange', $exchange);
     }
@@ -71,7 +74,7 @@ class HomeController extends Controller
         $users = Auth::user();
         $users->eur_boolean = 1;
         $users->save();
-        $exchange = DB::table('exchange')->where('id', 1)->first();
+        $exchange = DB::table('exchange')->first();
 
         return view('home')->with('users', $users)->with('exchange', $exchange);
     }
@@ -81,7 +84,7 @@ class HomeController extends Controller
         $users = Auth::user();
         $users->usd_boolean = 1;
         $users->save();
-        $exchange = DB::table('exchange')->where('id', 1)->first();
+        $exchange = DB::table('exchange')->first();
 
         return view('home')->with('users', $users)->with('exchange', $exchange);
     }
@@ -91,7 +94,7 @@ class HomeController extends Controller
         $users = Auth::user();
         $users->gbp_boolean = 1;
         $users->save();
-        $exchange = DB::table('exchange')->where('id', 1)->first();
+        $exchange = DB::table('exchange')->first();
 
         return view('home')->with('users', $users)->with('exchange', $exchange);
     }
@@ -145,7 +148,7 @@ class HomeController extends Controller
 
         $viewExchange = new Exchange();
         $msg = $viewExchange->viewExchange();
-        $exchange = DB::table('exchange')->where('id', 1)->first();
+        $exchange = DB::table('exchange')->first();
         $rsl = '';
 
         return view('/exchange')->with('users', Auth::user())->with('rsl', $rsl)->with('exchange', $exchange)->with('msg', $msg);
@@ -160,7 +163,7 @@ class HomeController extends Controller
 
         $exchange = new Exchange(Auth::user(), $value, $curr1, $curr2);
         $rsl = $exchange->exchange();
-        $exchange = DB::table('exchange')->where('id', 1)->first();
+        $exchange = DB::table('exchange')->first();
 
         return view('/exchange')->with('users', Auth::user())->with('rsl', $rsl)->with('exchange', $exchange);
     }
