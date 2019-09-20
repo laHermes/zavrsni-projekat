@@ -21,7 +21,7 @@ class AddTransactionsTable extends Migration
             $table->string('currency');
             $table->integer('from_id');
             $table->integer('to_id');
-            $table->integer('balance');
+            $table->decimal('balance', 15,2)->change();
             
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
