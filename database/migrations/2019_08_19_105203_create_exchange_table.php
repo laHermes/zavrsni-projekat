@@ -44,6 +44,7 @@ class AddExchangeTabel extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('exchange');
+
     }
 }
