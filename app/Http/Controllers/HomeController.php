@@ -101,8 +101,9 @@ class HomeController extends Controller
 
     public function viewSendMoney()
     {
+        $users = Auth::user();
         $msg = '';
-        return view('/sendMoney')->with('msg', $msg);
+        return view('/sendMoney')->with('msg', $msg)->with('users', $users);
     }
 
     public function sendMoney(Request $request)
@@ -146,7 +147,6 @@ class HomeController extends Controller
         $viewExchange = new Exchange();
         $msg = $viewExchange->viewExchange();
         $exchange = DB::table('exchange')->where('id', 1)->first();
-
         $rsl = '';
 
         return view('/exchange')->with('users', Auth::user())->with('rsl', $rsl)->with('exchange', $exchange)->with('msg', $msg);
@@ -244,7 +244,6 @@ class HomeController extends Controller
 
     public function resetPassword()
     {
-
         $new_password =  bcrypt('12345678');
         Auth::user()->password = $new_password;
         Auth::user()->save();

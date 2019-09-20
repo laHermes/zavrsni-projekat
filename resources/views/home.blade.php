@@ -8,10 +8,9 @@ OVERVIEW on {{$ldate = date('Y-m-d')}}
 
 
 <br>
+{{-- currencies table --}}
 <div class="fifty ">
     <div class="figma-div">
-
-
         <table class="table table-hover border-0">
             <thead class="table-head">
                 <tr>
@@ -91,6 +90,9 @@ OVERVIEW on {{$ldate = date('Y-m-d')}}
 </div>
 <br>
 <br>
+
+{{-- exchange rate table --}}
+
 <div class="fifty">
     <div class="figma-div">
         <table class="table table-hover">

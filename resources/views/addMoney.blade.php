@@ -6,9 +6,9 @@ Increase Funds
 
 @section('content')
 
+{{-- Currencies Table --}}
 <div class="figma-div">
     <div class="max-eight">
-
     @if($users->chf_boolean || $users->eur_boolean || $users->usd_boolean || $users->gbp_boolean)
     <table class="table">
         <thead>
@@ -54,10 +54,12 @@ Increase Funds
             </tr>
         <tbody>
     </table>
+    
 </div>
 </div>
 
-<div class="figma-div">
+{{-- Increase Funds Table --}}
+<div class="figma-div table-head">
         <div class="max-eight">
 <br>
     <form action="/addMoney" method="post">
@@ -93,14 +95,13 @@ Increase Funds
 <br>
 <br>
 
+{{-- Chart --}}
 <div class="figma-div">
     <canvas id="myChart" width="400" height="250"></canvas>
 </div>
 
 @else
-
 Please enable a currency.
-
 @endif
 </div>
 
@@ -109,6 +110,7 @@ Please enable a currency.
 </div>
 </div>
 
+{{-- JS --}}
 <script>
     let myChart = document.getElementById('myChart').getContext('2d');
 
