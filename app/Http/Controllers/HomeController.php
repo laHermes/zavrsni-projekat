@@ -34,8 +34,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->users = Auth::user();
-        View::share('users', $this->users);
+      
     }
 
     /**
@@ -50,6 +49,7 @@ class HomeController extends Controller
     {
         $time = Carbon::now();
         $time->toDateTimeString();
+        $viewExchange = new Exchange();
         $exchange = DB::table('exchange')->where('id', 1)->first();
         //->with('users', $users)
         return view('home')->with('time', $time)->with('exchange', $exchange);
@@ -58,7 +58,6 @@ class HomeController extends Controller
 
     public function addChf()
     {
-
         $users = Auth::user();
         $users->chf_boolean = 1;
         $users->save();
