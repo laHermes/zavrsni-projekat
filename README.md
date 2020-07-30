@@ -2,10 +2,10 @@
 
 Installation
 
-Run git clone [project-url]
+-Run git clone [project-url]
 
-Run Composer install,
+-Run Composer install
 
-Copy .env.example to .env file,
+-Copy .env.example to .env file
 
-Run php artisan key:generate,
+-Run php artisan key:generate
