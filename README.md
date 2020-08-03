@@ -14,3 +14,6 @@ Installation
 
 
 Login, Register, form validation, user authentication, GET JSON API, Raw DB, Eloquent
+
+
+Treba da se debagira migracija baze podataka i unese novi api-id za kursnu listu
